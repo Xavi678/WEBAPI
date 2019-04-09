@@ -1,0 +1,82 @@
+﻿@using Llibreria.Models;
+@model IEnumerable<Llibreria.Models.Copies>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @using (Html.BeginForm("Create", "Copies", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Create" class="boto" />
+        <input type="hidden" name="id" value="@ViewBag.ID" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDmovie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numCopia)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.invalida)*@
+            És invalid
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.motiu)*@
+            Motiu
+        </th>
+        <th>
+            Tria el Motiu de la Baixa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDmovie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numCopia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.invalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eMotiu)
+           
+        </td>
+        <td>
+
+            @using (Html.BeginForm("Elegit", "Copies", new { numCopia = item.numCopia }, FormMethod.Post))
+            {
+                @Html.DropDownList("Motiu",
+                                 new SelectList(Enum.GetValues(typeof(Llibreria.Models.Copies.Motiu))),
+                                 
+                                 new { @class = "form-control" })
+                <input type = "submit" value = "Donar de Baixa" />
+
+                <input type = "hidden" name = "id" value = "@ViewBag.ID" />
+            }
+
+
+        </td>
+        <td>
+            @Html.ActionLink("Lloguers", "Create", "Lloguers", new { movie = item.IDmovie, copia=item.numCopia}, new { @class = "navbar-brand" }) |
+        </td>
+        @* <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>*@
+</tr>
+}
+
+</table>

@@ -1,0 +1,109 @@
+﻿
+@model PagedList.IPagedList<MvcMovie.ViewModels.MovieIndex>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Crear Nova", "Create")
+    @using (Html.BeginForm())
+    {
+    <p class="filtre">
+        Genre: @Html.DropDownList("movieGenre", "All")
+        Title: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        IMDB: @Html.TextBox("SearchString2")
+        <input type="submit" value="Filter" />
+        <input type="reset" />
+    </p>
+}
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Titol", "Index", new { sortOrder = ViewBag.TitolsortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("DataEtrena", "Index", new { sortOrder = ViewBag.DatasortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Genere", "Index", new { sortOrder = ViewBag.GeneresortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Preu", "Index", new { sortOrder = ViewBag.PreusortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("IMDB", "Index", new { sortOrder = ViewBag.IMDBsortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+               Cartell
+            </th>
+
+            <th>
+                @Html.ActionLink("Durada", "Index", new { sortOrder = ViewBag.DuradasortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+               NumCopies
+
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEstrena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMDB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cartell)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durada)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.numCopies)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Lloguers", "Create", "Lloguers", new { movie=item.ID}, new { @class = "navbar-brand" }) |
+                @using (Html.BeginForm("DelCopies", "Movies", new { id = item.ID }, FormMethod.Post))
+                {
+
+                    <input type="submit" value="BorrarCopies" />
+
+
+                }
+
+
+
+
+            </td>
+            <td>
+                @Html.ActionLink(item.numCopies.ToString(),"Index","Copies",new { id=item.ID},null)
+            </td>
+        </tr>
+        }
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

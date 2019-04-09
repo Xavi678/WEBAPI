@@ -1,0 +1,12 @@
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\Llibreria.dll.config
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\Llibreria.dll
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\Llibreria.pdb
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\EntityFramework.dll
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\EntityFramework.xml
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\obj\Debug\Llibreria.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\obj\Debug\Llibreria.csproj.CopyComplete
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\obj\Debug\Llibreria.dll
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\obj\Debug\Llibreria.pdb
+C:\Users\xavi\Downloads\MVC-master (1)\MVC-master\Llibreria\obj\Debug\Llibreria.csprojAssemblyReference.cache

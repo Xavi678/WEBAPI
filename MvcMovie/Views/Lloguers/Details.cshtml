@@ -1,0 +1,74 @@
+﻿@model Llibreria.Models.Lloguer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lloguer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Copies.eMotiu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Copies.eMotiu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInici)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInici)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataReal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perdut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perdut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amortitzat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amortitzat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDlloguer }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

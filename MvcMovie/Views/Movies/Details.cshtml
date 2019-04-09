@@ -1,0 +1,86 @@
+﻿@model Llibreria.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEstrena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEstrena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMDB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMDB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cartell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cartell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopsi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopsi)
+        </dd>
+
+        <dd>
+            @Html.ActionLink("Lloguers", "Create", "Lloguers", new { movie = Model.ID }, new { @class = "navbar-brand" }) |
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "ObtenirGuid";
+}
+
+<h2>ObtenirGuid</h2>
+
+
+@using (Html.BeginForm("ObtenirGuid", "Consultes", FormMethod.Post))
+{
+
+    @*<label for="login">Nom:</label> <input type="text" id="login" class="form-control" />
+
+        <label for="password">Contrasenya:</label> <input type="text" id="password" class="form-control"
+        />*@
+
+<label class="control-label">Nom: </label>  @Html.TextBox("login",null,new { @class = "form-control" });<br />
+
+  <label class="control-label">Password: </label>    @Html.TextBox("password",null, new { @class = "form-control" });<br />
+    <input type="submit" class="btn btn-primary" />
+}
+
+
+@ViewBag.Resultat

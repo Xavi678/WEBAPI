@@ -1,0 +1,39 @@
+﻿
+@model string
+@{
+    /**/
+
+    ViewBag.Title = "TancarSessio";
+}
+
+<h2>Tancar Sessió</h2>
+
+
+
+
+@using (Html.BeginForm("TancarSessio", "Consultes", FormMethod.Post))
+{
+
+    @*<label for="login">Nom:</label> <input type="text" id="login" class="form-control" />
+
+        <label for="password">Contrasenya:</label> <input type="text" id="password" class="form-control"
+        />*@
+
+    <label class="control-label">Id: </label> @Html.TextBox("id", null, new { @class = "form-control" });<br />
+
+    /*<label class="control-label">Nova Contrasenya: </label> @Html.TextBox("password", null, new { @class = "form-control" });<br />*/
+
+
+    <input type="submit" class="btn btn-primary" />
+}
+
+@if (Model != null)
+{
+
+    <h2> @Html.DisplayForModel()</h2>
+}
+
+
+
+
+

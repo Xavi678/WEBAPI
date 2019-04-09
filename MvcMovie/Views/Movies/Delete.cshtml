@@ -1,0 +1,80 @@
+﻿@model Llibreria.Models.Movie
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEstrena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEstrena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMDB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMDB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cartell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cartell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durada)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,164 @@
+﻿
+@model PagedList.IPagedList<Llibreria.Models.Client>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+     @Html.ActionLink("Crear Nou", "Create")
+
+   
+    @using (Html.BeginForm())
+    {
+<p class="filtre">
+        NIF: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string) Paraula: @Html.TextBox("nom")
+        <input type="submit" value="Filter" />
+        <input type="reset" />
+    <p id="2"></p>
+    </p>
+}
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Nif", "Index", new { sortOrder = ViewBag.NifSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+
+            <th>
+                @Html.ActionLink("Nom", "Index", new { sortOrder = ViewBag.NomSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Cognom", "Index", new { sortOrder = ViewBag.CognomSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            
+            <th>
+                @Html.ActionLink("Carrer", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Numero", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Població", "Index", new { sortOrder = ViewBag.PoblacioSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Provincia", "Index", new { sortOrder = ViewBag.ProvinciaSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("CP", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("tLF", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Correu", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Aut", "Index")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cognom)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carrer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Poblacio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provincia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tlf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aut)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.NIF }) |
+                    <!-- @Html.ActionLink("Details", "Details", new { id = item.NIF }) |-->
+                    @Html.ActionLink("Delete", "Delete", new { id = item.NIF }) |
+
+                    @Html.ActionLink("Lloguer","Create","Lloguers",new { client=item.NIF },null)
+                   
+                    @*  @using (Html.BeginForm("Delete", "Clients/", new { id = item.NIF }, FormMethod.Post, new { @class = "forma" }))
+        {
+            <input type="submit" value="Delete" class="boto" />
+        }
+
+        @{
+            string a = string.Format("{0}", item.NIF);
+        }*@
+                    @*<a href="" onclick="return confirmacio('@a');">Delete</a>*@
+                </td>
+            </tr>
+        }
+        <script>
+            function confirmacio(id) {
+
+                var c = confirm("Segur que vols borrar l'element?");
+
+
+
+
+
+
+
+                if (c == true) {
+
+                    //httpPost("http://localhost:50201/Clients/Delete/"+id);
+                    $.post('@Url.Content("~/Clients/Delete/")' + id,
+                        function () {
+                            location.reload(true);
+                        });
+
+
+
+
+                } else {
+                    return false;
+                }
+
+
+            }
+
+
+
+          /*  function httpPost(theUrl) {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("POST", theUrl, false); // false for synchronous request
+                xmlHttp.send(null);
+
+            }*/
+        </script>
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

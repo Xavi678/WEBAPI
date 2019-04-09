@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Llibreria.Models.Movie>
+@{
+    ViewBag.Title = "ObtenirProductes";
+}
+
+<h2>ObtenirProductes</h2>
+
+
+
+@using (Html.BeginForm("ObtenirPelicules", "Consultes", FormMethod.Post))
+{
+
+    @*<label for="login">Nom:</label> <input type="text" id="login" class="form-control" />
+
+        <label for="password">Contrasenya:</label> <input type="text" id="password" class="form-control"
+        />*@
+
+    <label class="control-label">Id: </label> @Html.TextBox("id", null, new { @class = "form-control" });<br />
+
+
+    <input type="submit" class="btn btn-primary" />
+}
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>Títol</th>
+            <th>Genere</th>
+            <th>Data Estrena</th>
+            <th>Preu</th>
+            <th>Sinposi</th>
+            <th>IMDB</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.Titol</td>
+                <td>@item.Genere</td>
+                <td>@item.DataEstrena</td>
+                <td>@item.Preu</td>
+                <td>@item.Sinopsi</td>
+                <td>@item.IMDB</td>
+            </tr>
+
+        }
+
+    </table>
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
